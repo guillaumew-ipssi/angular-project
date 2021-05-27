@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">{{ appareil.appareilName }}</h3>
+      <input type="text" class="form-control" [(ngModel)]="appareil.appareilName">
+      <h4 class="card-subtitle mb-2">{{ appareil.created_at | date: 'EEEE, MMMM d, y' }}</h4>
+      <h2 class="card-subtitle mb-2" [ngStyle]="{'color': getColor()}"><div style="width:20px;height:20px;" [ngStyle]="{'background-color': getColor()}"></div>{{ appareil.appareilStatus }}</h2>
+      <a class="card-link" (click)="activate()">Activer appareil</a>
+      <a class="card-link" (click)="deactivate()">Désactiver appareil</a>
+    </div>
+  </div>
