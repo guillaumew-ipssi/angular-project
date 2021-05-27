@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', 
+    loadChildren: () => import('./appareil-view/appareil-view.module').then(m => m.AppareilViewModule) 
+  },
   { path: 'home', component: HomeComponent },
+  { path: 'auth', 
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: 'blog', 
     loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
   },
-  { path: 'appareils', 
+  { path: 'appareils',
+    canActivate: [AuthGuardService], 
     loadChildren: () => import('./appareil-view/appareil-view.module').then(m => m.AppareilViewModule) },
-  { path: '**', component: HomeComponent }
+  { path: 'appareils/:id', 
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./single-appareil/single-appareil.module').then(m => m.SingleAppareilModule) },
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({

@@ -11,6 +11,12 @@ export class AppareilComponent implements OnInit {
   @Input()
   appareil!: Appareil;
 
+  @Input()
+  index!: number;
+
+  @Input()
+  id!: number;
+
   constructor() {}
 
   ngOnInit(): void {

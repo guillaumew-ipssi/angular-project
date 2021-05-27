@@ -16,6 +16,7 @@ export class AppareilViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.appareils = this.appareilService.appareils;
+    // console.log(this.appareils);
   }
 
   switchOnAll() : void {

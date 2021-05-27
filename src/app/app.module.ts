@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { AppareilComponent } from './appareil/appareil.component';
 import { FormsModule } from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
+import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { FormsModule } from '@angular/forms';
     BlogComponent,
     HomeComponent,
     AppareilViewComponent,
-    AppareilComponent
+    AppareilComponent,
+    AuthComponent,
+    SingleAppareilComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

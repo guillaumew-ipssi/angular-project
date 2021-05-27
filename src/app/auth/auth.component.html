@@ -1,0 +1,7 @@
+<h3>Authentification</h3>
+
+<h4 *ngIf="authStatus == false">Vous n'êtes pas connecté</h4>
+<h4 *ngIf="authStatus">Vous êtes connecté</h4>
+
+<a class="btn" (click)="onSignIn()" *ngIf="authStatus == false" [ngStyle]="{'background-color': 'green' }">Se connecter</a>
+<a class="btn" (click)="onSignOut()" *ngIf="authStatus" [ngStyle]="{'background-color': 'red' }">Se déconnecter</a>

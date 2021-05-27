@@ -1,8 +1,12 @@
 <ul class="list-group">
     <app-appareil
-    *ngFor="let appareil of appareils"
+    *ngFor="let appareil of appareils; let i = index"
     [appareil]="appareil"
+    [ngModel]="appareil.appareilName"
+    [ngModel]="appareil.appareilStatus"
+    [index]="i"
+    [id]="appareil.id"
     ></app-appareil>
 </ul>
-<a class="card-link" (click)="switchOnAll()">Allumer tous les appareils</a>
-<a class="card-link" (click)="switchOffAll()">Éteindre tous les appareils</a>
+<a class="btn btn-success" (click)="switchOnAll()">Allumer tous les appareils</a>
+<a class="btn btn-danger" (click)="switchOffAll()">Éteindre tous les appareils</a>
