@@ -1,0 +1,8 @@
+<h3>Nb d'étudiants : {{ nb_etuds }}</h3>
+<ul class="list-group">
+    <app-course
+    *ngFor="let course of arrayCours"
+    [course]="course"
+    (newNb)="onNewNb($event)"
+    ></app-course>
+</ul>

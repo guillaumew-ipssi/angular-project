@@ -19,6 +19,8 @@ import { SingleAppareilComponent } from './single-appareil/single-appareil.compo
 import { ErrorComponent } from './error/error.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { CourseComponent } from './course/course.component';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NewUserComponent } from './new-user/new-user.component';
     SingleAppareilComponent,
     ErrorComponent,
     UserListComponent,
-    NewUserComponent
+    NewUserComponent,
+    CourseComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

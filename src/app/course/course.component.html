@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">{{ course.titre }}</h3>
+      <!-- <h2 class="card-subtitle mb-2">{{ course.nb_etud }}</h2> -->
+      <input name="{{ course.titre }}" [(ngModel)]="course.nb_etud" (change)="updateNb(course.nb_etud)"> étudiants
+    </div>
+  </div>
+

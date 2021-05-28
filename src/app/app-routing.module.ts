@@ -16,6 +16,8 @@ const routes: Routes = [
   },
   { path: 'users', 
     loadChildren: () => import('./user-list/user-list.module').then(m => m.UserListModule)},
+    { path: 'courses', 
+    loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)},
     { path: 'new-user', 
     loadChildren: () => import('./new-user/new-user.module').then(m => m.NewUserModule)},
   { path: 'appareils',
