@@ -1,0 +1,20 @@
+<ul class="list-group">
+    <li *ngFor="let user of users;">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">First Name : {{ user.firstName }}</h3>
+              <h3 class="card-title">Last Name : {{ user.lastName }}</h3>
+              <h4 class="card-subtitle mb-2">Email : {{ user.email }}</h4>
+              <h4 class="card-subtitle mb-2">Drink Preference : {{ user.drinkPreference }}</h4>
+              <h4 class="card-subtitle mb-2" *ngIf="user.hobbies && user.hobbies.length > 0">
+                Hobbies : 
+                <li *ngFor="let hobbie of user.hobbies">
+                    <ul>{{ hobbie }}</ul>
+                </li>
+                </h4>
+            </div>
+        </div>
+    </li>    
+</ul>
+
+<a class="btn btn-success" [routerLink]="['/new-user']">Add user</a>

@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Appareil } from '../model/interface/appareil';
 import { AppareilService } from '../service/appareil.service';
 
@@ -11,11 +12,17 @@ import { AppareilService } from '../service/appareil.service';
 export class AppareilViewComponent implements OnInit {
 
   appareils!: Appareil[];
+  appareilSubscription!: Subscription;
 
   constructor(private appareilService: AppareilService) { }
 
   ngOnInit(): void {
-    this.appareils = this.appareilService.appareils;
+    this.appareilSubscription = this.appareilService.appareilsSubject.subscribe(
+      (appareils: any[]) => {
+        this.appareils = appareils;
+      }
+    );
+    this.appareilService.emitAppareilSubject();
     // console.log(this.appareils);
   }
 
@@ -28,6 +35,10 @@ export class AppareilViewComponent implements OnInit {
     if(response){
       this.appareilService.switchOffAll();
     }
+  }
+
+  ngOnDestroy() {
+    this.appareilSubscription.unsubscribe();
   }
 
 }

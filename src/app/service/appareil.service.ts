@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Appareil } from '../model/interface/appareil';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AppareilService {
 
   date = new Date();
   
-  appareils: Appareil[] = [
+  private appareils: Appareil[] = [
 
     {id: 1, appareilName: "Machine à laver", appareilStatus: "éteint", created_at: this.date},
     
@@ -17,6 +18,8 @@ export class AppareilService {
     {id: 3, appareilName: "Ordinateur", appareilStatus: "éteint", created_at: this.date}
     
     ]
+
+  appareilsSubject = new Subject<any[]>();
     
   constructor() { }
 
@@ -24,12 +27,24 @@ export class AppareilService {
     for (let i = 0; i < this.appareils.length; i++) {
       this.appareils[i].appareilStatus = "allumé"
     }
+    this.emitAppareilSubject();
   }
 
   switchOffAll() : void {
     for (let i = 0; i < this.appareils.length; i++) {
       this.appareils[i].appareilStatus = "éteint"
+      this.emitAppareilSubject();
     }
+  }
+
+  switchOnOne(i: number) {
+    this.appareils[i].appareilStatus = 'allumé';
+    this.emitAppareilSubject();
+  }
+
+  switchOffOne(i: number) {
+    this.appareils[i].appareilStatus = 'éteint';
+    this.emitAppareilSubject();
   }
 
   getAppareilById(id: number){
@@ -39,5 +54,9 @@ export class AppareilService {
       }
     );
     return appareil;
+  }
+
+  emitAppareilSubject(){
+    this.appareilsSubject.next(this.appareils.slice());
   }
 }
