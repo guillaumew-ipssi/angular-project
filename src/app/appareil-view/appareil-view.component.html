@@ -2,8 +2,6 @@
     <app-appareil
     *ngFor="let appareil of appareils; let i = index"
     [appareil]="appareil"
-    [ngModel]="appareil.appareilName"
-    [ngModel]="appareil.appareilStatus"
     [index]="i"
     [id]="appareil.id"
     ></app-appareil>
