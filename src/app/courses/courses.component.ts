@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Cours } from '../model/interface/cours';
 import { CoursesService } from '../service/courses.service';
 
@@ -8,9 +8,6 @@ import { CoursesService } from '../service/courses.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-
-  @Output()
-  newNb = new EventEmitter<number>();
 
   arrayCours!: Cours[];
 
@@ -33,6 +30,7 @@ export class CoursesComponent implements OnInit {
   }
 
   onNewNb(nb: number){
-    this.newNb.emit(nb);
+    // this.newNb.emit(nb);
+    this.nb_etuds += +nb;
   }
 }

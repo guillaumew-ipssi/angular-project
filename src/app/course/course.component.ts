@@ -23,8 +23,10 @@ export class CourseComponent implements OnInit {
     this.lastNb = this.course.nb_etud;
   }
 
-  updateNb(nb: number){
-    this.course.nb_etud = nb;
-    console.log(this.course);
+  updateNb(){
+    let res = this.course.nb_etud - this.lastNb;
+    this.lastNb = this.course.nb_etud;
+    this.newNb.emit(res);
+    // console.log(this.course);
   }
 }
